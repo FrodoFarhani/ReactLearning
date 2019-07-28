@@ -1,0 +1,26 @@
+body{
+    margin: 0;
+}
+header{
+    background:#03a9f4;
+    text-align: center;
+}
+.logo{
+    color:#fff;
+    font-size: 40px;
+    font-family:"Anton";
+    text-align:"center";
+}
+header input{
+    font-size: 20px;
+    margin: 20px 0px;
+}
+.active{
+    background:red;
+}
+.non-active{
+    background: blue;
+}
+.fontstyle{
+    font-size: 20px;
+}
