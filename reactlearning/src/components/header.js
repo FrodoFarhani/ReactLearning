@@ -1,4 +1,5 @@
 import React,{Component} from "react";
+import classes from "../css/styles.css";
 
 const getYear=()=>{
     let mydate=new Date();
@@ -39,25 +40,32 @@ const user={
  */
 //class Header extends React.Component{
 // we import {Component} from react on top of here so we change this line, this is ES 6 magic ! 
-class Header extends Component{
+
+/**
+ * last comment: when we use class components we should avoid using state and we should handle it
+ * with functions, with last changes we do not need state items any more... instead we use keywords
+ * function. so we can turn it back to functional component
+ */
+//class Header extends Component{
+const Header=(props)=>{
     
     /**
      * state is a special object for react because whenever this object changes react would call RENDER
      * tmethod again. for changing this state we have state.setState() method....
      */
-    state={
+    /* state={
        // title:"The keywords are:",
         keyword:"",
        // active:false // this will change the header color while typing!
         active:'non-active' // this will change the header color while typing!
-    }
+    } */
     /**
      *we chenge the method to fat arrow function just for this word !
      fat arrow functions are smart and THIS in them refers to the parent, here is our class.
      so we do not need to .bind(this) in calling the method in render
      */
     //inputChangeHandler(event){
-    inputChangeHandler=(event)=>{
+    /* inputChangeHandler=(event)=>{
         //console.log(event.target.value);
        // let blntyping=event.target.value===''?false:true;
         let classtyping=event.target.value===''?'non-active':'active';
@@ -66,9 +74,9 @@ class Header extends Component{
             //active:blntyping
             active:classtyping
         });
-    }
+    } */
     
-    render(){// this render is like a constructor for this class
+   // render(){// this render is like a constructor for this class
         /**
          * with bellow aproach styles would be inline and this is not good !    
          */
@@ -101,11 +109,13 @@ class Header extends Component{
              * code like the line bellow of the orginal
              */
             //console.log(this.state);
+            console.log(props.keywords);
             
             return(
                 /* <header style={{background:`${this.state.active?'red':'blue'}` }}> */
-                <header className={this.state.active}>
-                    <div className="logo" 
+                /* <header className={this.state.active}> */
+                <header>
+                    <div className={classes.logo} 
                         onClick={()=>{
                         console.log("I just clicked!");    
                         }}
@@ -113,7 +123,9 @@ class Header extends Component{
                         }
                     >LOGO</div>
                     <input type="text" 
-                        onChange={this.inputChangeHandler} 
+                       //onChange={this.inputChangeHandler} 
+                      // onChange={this.props.keywords} 
+                       onChange={props.keywords} 
                         /**
                          * the reason why we add .bind(this) to our code is in inputChangeHandler method 
                          * we have this.setState and this refers to his own method witch is inputChangeHandler!
@@ -128,7 +140,7 @@ class Header extends Component{
                     
                 </header>
                 )
-    }
+   // }
 }
 
 export default Header

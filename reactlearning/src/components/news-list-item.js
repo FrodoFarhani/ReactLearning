@@ -22,6 +22,11 @@ const NewsItem=({item})=>{
                 {/* <h2>{props.item.title}</h2>
                 <h4>{props.item.feed}</h4> */}
                 <h2>{item.title}</h2>
+                {/*to use classes like this firs we run npm run reject to show config file
+                then in config folder webpack.config.js we find cssregex and then add these 2 lines:
+                 modules:true,
+                localIdentName:'[name]__[local]__[hash:base64:5]',
+                now we can use classes like this by class name */}
                 <div className={classes.fontstyle}>{item.feed}</div>
                
             </div>

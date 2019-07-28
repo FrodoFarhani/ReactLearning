@@ -22,5 +22,6 @@ header input{
     background: blue;
 }
 .fontstyle{
+    font-style:italic;
     font-size: 20px;
 }

@@ -38,17 +38,33 @@ import NewsList from "./components/news-list";
 class App extends Component{
 
     state={
-        news:jsonnews
+        news:jsonnews,
+        filtered:[]
+    }
+    getKeywords=(event)=>{
+        //console.log(event.target.value);
+        let keyword=event.target.value;
+        let filtered=this.state.news.filter((item)=>{
+            return item.title.indexOf(keyword)>-1
+        });
+        this.setState({
+            filtered:filtered
+        });
+        //console.log(filtered);
+        
     }
     render(){
         //console.log(this.state);
         /** we can pass data between components with props , props are in all components by default
          * NOTE: stateless components (just function in component like news-list) 
          * */
+
+         let filteredNews=this.state.filtered;
+         let allNews=this.state.news;
         return(
             <div>
-                <Header/>
-                <NewsList news={this.state.news} alaki="che jaleb!">
+                <Header keywords={this.getKeywords}/>
+                <NewsList news={filteredNews.length===0? allNews:filteredNews}> 
                     <h2>The Latest News:</h2>
                     <hr/><hr/><br/>
                 </NewsList>
