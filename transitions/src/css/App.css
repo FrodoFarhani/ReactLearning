@@ -73,6 +73,26 @@
 /*=======================================
             TRANSITIONS BASIC 
 ========================================*/
+.square {
+  background: #222 ;
+  height: 100px;
+  transition: all 2s ease;
+  opacity: 1;
+}
+.square.square-entering{
+  opacity: 1;
+  transform: translateX(0%);
+}
+.square.square-entered{
+  background: blue;
+}
+.square.square-exiting{
+  background: green;
+}
+.square.square-exited{
+  opacity: 1;
+  transform: translateX(-100%);
+}
 
 /*=======================================
                 CSSTRANSITIONS
