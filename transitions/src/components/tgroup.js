@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import { CSSTransition,TransitionGroup } from 'react-transition-group';
 import '../css/App.css';
 
+/**
+ * The main different between transition group and CSSTransition and Transition is
+ * here we do transitions with th group or object, here is items
+ */
 class Slide extends Component{
     state = {
         items:[]
@@ -8,7 +13,17 @@ class Slide extends Component{
     
     addElements () {
         return this.state.items.map((item,i) => (
-            <div className="item" key={i}>{item}</div>
+            <CSSTransition
+                classNames="item"
+                timeout={500}
+                key={i}
+                onEntered={(node)=>{
+                    node.classList.add('active');
+                }}
+            >
+                <li className="item" key={i}>{item}</li>
+            </CSSTransition>
+            
         ));
     }
 
@@ -31,7 +46,13 @@ class Slide extends Component{
     render(){
         return(
             <div>
-                {this.addElements()}
+                <TransitionGroup
+                        component="ul"// or div  ....
+                        className="list"
+                >
+                        {this.addElements()}
+                </TransitionGroup>
+                
              
                 <div className="btns">
                     <div className="btn-add" onClick={()=> this.generateNumber()}>Add Elements</div>
